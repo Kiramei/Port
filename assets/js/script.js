@@ -3,13 +3,19 @@ var flg = true
 document.querySelector('body').onscroll = (e) => {
     if (flg) {
         $('#top-back').removeClass('d-none')
-        if (window.scrollY > 50)
-            fadeIn(), flg = false
-        else
-            fadeOut(), flg = false
+        utt()
     }
     // console.log(doc)
 }
+
+const utt = () => {
+    if (window.scrollY > 50 || window.innerWidth < 992)
+        fadeIn(), flg = false
+    else
+        fadeOut(), flg = false
+}
+utt()
+
 const fadeIn = () => {
     let temp = setInterval(() => {
         if (t < 1) {
