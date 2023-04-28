@@ -2033,11 +2033,21 @@ button.btn.btn-w3layouts.btn-block.w-25 {
 
 *::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: rgba(224, 220, 220, .66667);
+    background-color: rgba(0, 59, 142, 0.813);
     background-image: -webkit-linear-gradient(45deg, hsla(0, 0%, 100%, .2) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, .2) 0, hsla(0, 0%, 100%, .2) 75%, transparent 0, transparent);
 }
 
 *::-webkit-scrollbar-track {
     background: hsla(0,0%,92.9%,.33333);
     border-radius: 10px;
+}
+
+*::-webkit-scrollbar {
+    z-index: 999;
+    width: 7px;
+    height: 1px;
+}
+
+.spotlight-holder .col{
+    margin-top: 5vh;
 }

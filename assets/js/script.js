@@ -1,37 +1,40 @@
-var t = 0
-var flg = true
-document.querySelector('body').onscroll = (e) => {
-    if (flg) {
-        $('#top-back').removeClass('d-none')
-        utt()
-    }
-    // console.log(doc)
-}
-
-const utt = () => {
-    if (window.scrollY > 50 || window.innerWidth < 992)
-        fadeIn(), flg = false
-    else
-        fadeOut(), flg = false
-}
-utt()
+var flg_ = true
+var topBack = $('#top-back')
 
 const fadeIn = () => {
-    let temp = setInterval(() => {
-        if (t < 1) {
-            t += 0.15
-            $('#top-back').css('opacity', t)
-        }
-        else clearInterval(temp), flg = true
-    }, 30)
+    topBack.stop().animate({
+        opacity: 1
+    }, 10)
 }
 
 const fadeOut = () => {
-    let temp = setInterval(() => {
-        if (t >= 0) {
-            t -= 0.15
-            $('#top-back').css('opacity', t)
-        }
-        else clearInterval(temp), flg = true
-    }, 30)
+    topBack.stop().animate({
+        opacity: 0
+    }, 10)
 }
+
+const canBarFade = () => {
+    if (flg_)
+        if (window.scrollY > 50) fadeIn()
+        else fadeOut()
+}
+
+const init = () => {
+    if (window.innerWidth < 992) topBack.css('opacity', 1), flg_ = false
+    else flg_ = true
+    canBarFade()
+}
+
+$(init)
+
+$(window).scroll(canBarFade)
+
+$(window).resize(init)
+
+const scrollTop = () => {
+    $('html, body').stop().animate({
+        scrollTop: 0
+    }, 1000)
+}
+
+$('#main-label').click(scrollTop)
